@@ -1,0 +1,53 @@
+import java.util.*;
+
+public class ComplexCodeExample {
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Lütfen bir sayı girin: ");
+        int number = scanner.nextInt();
+        
+        if (number % 2 == 0) {
+            System.out.println("Girdiğiniz sayı çifttir.");
+        } else {
+            System.out.println("Girdiğiniz sayı tektir.");
+        }
+        
+        List<Integer> primeNumbers = new ArrayList<>();
+        for (int i = 2; i <= number; i++) {
+            boolean isPrime = true;
+            for (int j = 2; j < i; j++) {
+                if (i % j == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if (isPrime) {
+                primeNumbers.add(i);
+            }
+        }
+        
+        System.out.println("Girdiğiniz sayıya kadar olan asal sayılar: ");
+        for (int primeNumber : primeNumbers) {
+            System.out.print(primeNumber + " ");
+        }
+        System.out.println();
+        
+        int sum = 0;
+        for (int primeNumber : primeNumbers) {
+            sum += primeNumber;
+        }
+        System.out.println("Asal sayıların toplamı: " + sum);
+        
+        int factorial = calculateFactorial(number);
+        System.out.println("Girdiğiniz sayının faktöriyeli: " + factorial);
+    }
+    
+    private static int calculateFactorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        } else {
+            return n * calculateFactorial(n - 1);
+        }
+    }
+}
